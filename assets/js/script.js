@@ -126,13 +126,16 @@ formularioTarea.addEventListener('submit', (event) => {
 listarTareas.addEventListener('click', (event) => {
   if (event.target.classList.contains('btn-danger')) {
     const id = Number(event.target.dataset.id);
+    // Se reutiliza variable para identificar el nombre de la Tarea
+    const tarea = gestorTareas.listarTareas().find((tarea) => tarea.id === id);
     gestorTareas.eliminarTarea(id);
-    insertAlert('danger', 'Tarea eliminada exitosamente');
+    insertAlert('danger', `Tarea ${tarea.descripcion} eliminada exitosamente`);
     renderizarTareas();
   } else if (event.target.classList.contains('btn-success')) {
     const id = Number(event.target.dataset.id);
+    const tarea = gestorTareas.listarTareas().find((tarea) => tarea.id === id);
     gestorTareas.cambiarEstado(id);
-    insertAlert('info', 'Se ha cambiado el estado de la Tarea');
+    insertAlert('info', `Se ha cambiado el estado de la Tarea ${tarea.descripcion}`);
     renderizarTareas();
   }
 });
