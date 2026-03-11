@@ -127,11 +127,12 @@ listarTareas.addEventListener('click', (event) => {
   if (event.target.classList.contains('btn-danger')) {
     const id = Number(event.target.dataset.id);
     gestorTareas.eliminarTarea(id);
-    insertAlert('success', 'Tarea eliminada exitosamente.');
+    insertAlert('danger', 'Tarea eliminada exitosamente');
     renderizarTareas();
   } else if (event.target.classList.contains('btn-success')) {
     const id = Number(event.target.dataset.id);
     gestorTareas.cambiarEstado(id);
+    insertAlert('info', 'Se ha cambiado el estado de la Tarea');
     renderizarTareas();
   }
 });
@@ -146,6 +147,12 @@ const insertAlert = (className, message) => {
   `;
 
   alertContainer.innerHTML = alert;
+
+  // Eliminar mensaje automaticamente
+  setTimeout(() => {
+    alertContainer.innerHTML = '';
+  },2000);
+
 };
 
 // Usando API Geolocalization

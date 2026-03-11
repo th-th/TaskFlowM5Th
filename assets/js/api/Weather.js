@@ -1,5 +1,5 @@
 // OpenWeather API - Api de terceros para el clima
-const API_KEY = '5041d54fd8a673370a396b5ccf24748a';
+const API_KEY = '5a45727ee22f0a6735c03e459918b4c1';
 const getWeather = async (lat, lon) => {
   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric&lang=es`;
 
@@ -17,7 +17,7 @@ const getWeather = async (lat, lon) => {
     const topBar = document.getElementById('topBar');
     topBar.innerHTML = `
       <div class="container-fluid">
-        <p class="small my-0 mx-auto">Clima actual en ${nombreLocalidad[0]}, ${nombreLocalidad[1]}: <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png" width="40" > ${data.weather[0].description} - Temperatura: ${data.main.temp}°C - Humedad ambiental: ${data.main.humidity}%</p>
+        <p class="small my-0 mx-auto">Clima actual en ${nombreLocalidad[0]}: <img src="https://openweathermap.org/img/wn/${data.weather[0].icon}.png" width="40" > ${data.weather[0].description} - Temperatura: ${data.main.temp}°C - Humedad ambiental: ${data.main.humidity}%</p>
       </div>
     `;
   } catch (error) {
